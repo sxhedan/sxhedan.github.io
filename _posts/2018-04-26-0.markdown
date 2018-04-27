@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "SSH to an Android device from a Linux system"
+date:   2018-04-26
+---
+
+Several days ago, my friend Hao recommended me a very interesting Android app Termux. It's a terminal emulator and I found Python and git is available here! Maybe I can do something interesting with it on my cell phone.
+
+However, the virtual keyboard on my phone is a disaster.
+I don't think I can live with it.
+It will be cool if I can access Termux on my cell phone from my laptop.
+Fortunately, I found someone else tried something similar and I finally figured out how to do it.
+
+1. Download and install Termux on the Android device.
+
+2. Open Termux and install ```openssh```:
+```
+$ pkg install openssh
+```
+We can ssh into remote systems from this Android device after ```openssh``` is installed. However, extra setups are needed before we can ssh into this device from other systems.
+
+3. It seems we are not allowed to ssh to the Android device using password, so we need to set up a key to login. An SSH key is necessary on the PC if it doesn't exist:
+```
+$ ssh-keygen -t rsa
+```
+Generated files are stored in ```~/.ssh``` by default.
+
+4. Write the content in ```~/.ssh/rsa_id.pub``` on PC to
+```~/.ssh/authorized_keys``` in Termux on the Android device.
+We can download the key by ```scp``` from the PC.
+
+5. Find username of the device by typing
+```
+$ whoami
+```
+in Termux and find ip of the device by checking ```System > About phone > Status > IP address```. Unfortunately, ip address is not fixed. We need to check it every time we tried to login.
+
+6. Active sshd in Termux:
+```
+$ sshd
+```
+
+7. Connect:
+```
+$ ssh username@ip -p 8022
+```
+
+Now I can use my laptop's keyboard for my cell phone.
