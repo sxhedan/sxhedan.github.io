@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Spider and email"
+date:   2018-04-28
+categories:
+---
+
+Trying to work out a program to find news I'm interested in and send it to me by email.
+
+[Source code](https://github.com/sxhedan/spider_and_email).
+
+### Python 3 modules
+* Spider:
+  * requests
+  * BeautifulSoup
+* Email:
+  * smtplib
+  * email
+
+### Features to be developed
+* keywords filter
+* comments filter
