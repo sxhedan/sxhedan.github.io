@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "It's a test"
+date:   2018-05-01
+categories:
+---
+
+It's a test.
