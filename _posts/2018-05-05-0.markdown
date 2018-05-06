@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "Make use of iterator in C++"
+date:   2018-05-05
+categories:
+---
+
+Honestly, I seldom used iterator in C++ or Python because I though pointer is always a good way to go.
+However, I found it's pretty cool to make use of iterator when I tried to solve a simple problem (Intersection of Two Arrays) on Leetcode.
+
+```
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> ints;
+
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+
+        vector<int>::iterator iter1 = nums1.begin();
+        vector<int>::iterator iter2 = nums2.begin();
+
+        while (iter1 != nums1.end())
+        {
+            if (iter2 == nums2.end())
+                return ints;
+            
+            while (*iter1 > *iter2)
+            {
+                iter2++;
+                if (iter2 == nums2.end())
+                    return ints;
+            }
+            
+            if (*iter1 == *iter2)
+                ints.push_back(*iter1);
+                
+            while (*iter1 == *(++iter1))
+            {
+                if (iter1 == nums1.end())
+                    return ints;
+            }
+        }
+
+        return ints;
+    }
+};
+```
