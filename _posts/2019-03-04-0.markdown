@@ -12,4 +12,3 @@ $ bundle exec jekyll serve
 
 * Preview local Jekyll sites: <http://localhost:4000>.
 
-* Cheatsheet: <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links>.
